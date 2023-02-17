@@ -113,6 +113,8 @@ module.exports = class ProviderGCP {
                 const summary = {
                     id: instanceDesc.id,
                     status: instanceDesc.metadata.status,
+                    ip: instanceDesc.metadata.networkInterfaces[0]
+                        .accessConfigs[0].natIP,
                     tag: getTag(instanceDesc),
                 };
                 winston.debug("[ProviderGCP] summarizeInfo:", summary);
